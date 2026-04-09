@@ -2,7 +2,7 @@ import sqlite3
 import ai_processor
 
 # 1. Setup
-api_key = "AIzaSyC0lod69jqABS1sLloJ_mL53Z9Jh6a0anI"
+api_key = "Your API key here"
 user_input = input("Enter expense (e.g., '1500 for bike fuel'): ")
 
 # 2. AI Logic
