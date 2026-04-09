@@ -1,16 +1,21 @@
 import sqlite3
 import ai_processor
 
-# 1. Ask the user what they spent
-print("--- AI Expense Tracker ---")
-user_input = input("What did you buy today? ")
+# 1. Setup
+api_key = "AIzaSyC0lod69jqABS1sLloJ_mL53Z9Jh6a0anI"
+user_input = input("Enter expense (e.g., '1500 for bike fuel'): ")
 
-# 2. Get your Secret Key (You would type your key here locally)
-api_key = "YOUR_KEY_HERE"
+# 2. AI Logic
+# AI returns something like "1500, Transport"
+ai_result = ai_processor.analyze_spending(user_input, api_key)
+amount, category = ai_result.split(",")
 
-# 3. Use AI to understand the text
-result = ai_processor.analyze_spending(user_input, api_key)
-print(f"AI suggests: {result}")
+# 3. Save to Database
+conn = sqlite3.connect('expenses.db')
+cursor = conn.cursor()
+cursor.execute("INSERT INTO spending (description, amount, category) VALUES (?, ?, ?)", 
+               (user_input, float(amount.strip()), category.strip()))
+conn.commit()
+conn.close()
 
-# 4. Save it to the database
-# (In the next step, we will make this automatic!)
+print(f"✅ Saved: {amount.strip()} LKR in {category.strip()} category.")
