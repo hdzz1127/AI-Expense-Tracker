@@ -1,5 +1,5 @@
 # 🤖 AI Expense Tracker
-
+<img width="1564" height="161" alt="Screenshot 2026-04-10 131306" src="https://github.com/user-attachments/assets/de360d7a-f85d-451b-b5c1-2118aee77483" />
 A smart personal finance tool that uses **Gemini 1.5 Flash** to automatically categorize expenses from natural language input.
 
 ## 🌟 Features
